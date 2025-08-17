@@ -1,0 +1,633 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom styles for blog */
+.prose {
+  @apply text-foreground;
+  overflow: visible; /* Allow iframes to break out */
+}
+
+/* Ensure prose container doesn't limit iframe width */
+.prose > * {
+  overflow: visible;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply text-foreground font-bold scroll-mt-20;
+}
+
+.prose h1 {
+  @apply text-3xl mb-6;
+}
+
+.prose h2 {
+  @apply text-2xl mb-4 mt-8;
+}
+
+.prose h3 {
+  @apply text-xl mb-3 mt-6;
+}
+
+.prose p {
+  @apply mb-4 leading-relaxed;
+}
+
+.prose ul,
+.prose ol {
+  @apply mb-4 pl-6;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-primary pl-4 italic text-muted-foreground bg-muted py-2 rounded-r;
+}
+
+.prose code {
+  @apply bg-muted text-foreground px-2 py-1 rounded text-sm font-mono;
+}
+
+.prose pre {
+  @apply bg-muted text-foreground p-4 rounded-lg overflow-x-auto;
+}
+
+.prose pre code {
+  @apply bg-transparent text-foreground p-0;
+}
+
+.prose img {
+  @apply rounded-lg shadow-md;
+}
+
+.prose a {
+  @apply text-primary hover:text-primary/80 underline;
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.65rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.141 0.005 285.823);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.141 0.005 285.823);
+  --primary: oklch(0.606 0.25 292.717);
+  --primary-foreground: oklch(0.969 0.016 293.756);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.967 0.001 286.375);
+  --muted-foreground: oklch(0.552 0.016 285.938);
+  --accent: oklch(0.967 0.001 286.375);
+  --accent-foreground: oklch(0.21 0.006 285.885);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.92 0.004 286.32);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.606 0.25 292.717);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.141 0.005 285.823);
+  --sidebar-primary: oklch(0.606 0.25 292.717);
+  --sidebar-primary-foreground: oklch(0.969 0.016 293.756);
+  --sidebar-accent: oklch(0.967 0.001 286.375);
+  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
+  --sidebar-border: oklch(0.92 0.004 286.32);
+  --sidebar-ring: oklch(0.606 0.25 292.717);
+}
+
+.dark {
+  --background: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.21 0.006 285.885);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.541 0.281 293.009);
+  --primary-foreground: oklch(0.969 0.016 293.756);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.274 0.006 286.033);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.541 0.281 293.009);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.21 0.006 285.885);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.541 0.281 293.009);
+  --sidebar-primary-foreground: oklch(0.969 0.016 293.756);
+  --sidebar-accent: oklch(0.274 0.006 286.033);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.541 0.281 293.009);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom scrollbar styles using CSS variables */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground));
+  border-radius: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--foreground));
+}
+
+/* Remove text outline and text-shadow */
+.code-view-container {
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+  text-stroke: 0 !important;
+}
+
+.code-view-container * {
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+  text-stroke: 0 !important;
+}
+
+/* Remove Prism.js text effects */
+.code-view-container .token {
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+  text-stroke: 0 !important;
+}
+
+/* Ensure all Prism.js tokens are visible */
+.code-view-container .token.keyword,
+.code-view-container .token.operator,
+.code-view-container .token.punctuation,
+.code-view-container .token.string,
+.code-view-container .token.number,
+.code-view-container .token.comment,
+.code-view-container .token.function,
+.code-view-container .token.variable,
+.code-view-container .token.constant,
+.code-view-container .token.preprocessor {
+  color: hsl(var(--foreground)) !important;
+  background: transparent !important;
+}
+
+/* Specific token overrides for better visibility */
+.code-view-container .token.keyword {
+  color: #60a5fa !important; /* Blue for keywords */
+}
+
+.code-view-container .token.string {
+  color: #fbbf24 !important; /* Yellow for strings */
+}
+
+.code-view-container .token.number {
+  color: #34d399 !important; /* Green for numbers */
+}
+
+.code-view-container .token.comment {
+  color: #9ca3af !important; /* Gray for comments */
+}
+
+.code-view-container .token.function {
+  color: #f87171 !important; /* Red for functions */
+}
+
+.code-view-container .token.operator,
+.code-view-container .token.punctuation {
+  color: #e5e7eb !important; /* Light gray for operators */
+}
+
+.code-view-container .token.preprocessor {
+  color: #a78bfa !important; /* Purple for preprocessor */
+}
+
+/* Light mode specific token overrides - softer colors */
+.light .code-view-container .token.keyword {
+  color: #2563eb !important; /* Darker blue for light mode */
+}
+
+.light .code-view-container .token.string {
+  color: #d97706 !important; /* Darker yellow for light mode */
+}
+
+.light .code-view-container .token.number {
+  color: #059669 !important; /* Darker green for light mode */
+}
+
+.light .code-view-container .token.comment {
+  color: #6b7280 !important; /* Darker gray for light mode */
+}
+
+.light .code-view-container .token.function {
+  color: #dc2626 !important; /* Darker red for light mode */
+}
+
+.light .code-view-container .token.operator,
+.light .code-view-container .token.punctuation {
+  color: #374151 !important; /* Dark gray for operators in light mode */
+}
+
+.light .code-view-container .token.preprocessor {
+  color: #7c3aed !important; /* Darker purple for light mode */
+}
+
+/* Ensure good contrast for all tokens in both modes */
+.code-view-container .token {
+  font-weight: 500 !important; /* Slightly bolder for better readability */
+}
+
+/* Specific punctuation tokens that should be subtle but visible */
+.code-view-container .token.punctuation.operator,
+.code-view-container .token.punctuation.definition {
+  opacity: 0.8 !important; /* Slightly transparent for subtlety */
+}
+
+/* Comments should be readable but not too prominent */
+.code-view-container .token.comment {
+  font-style: italic !important; /* Italic for comments */
+  opacity: 0.9 !important; /* Slightly transparent */
+}
+
+/* Dark mode specific overrides */
+.dark .code-view-container .token.keyword {
+  color: #93c5fd !important; /* Lighter blue for dark mode */
+}
+
+.dark .code-view-container .token.string {
+  color: #fde047 !important; /* Brighter yellow for dark mode */
+}
+
+.dark .code-view-container .token.number {
+  color: #6ee7b7 !important; /* Brighter green for dark mode */
+}
+
+.dark .code-view-container .token.comment {
+  color: #d1d5db !important; /* Lighter gray for dark mode */
+}
+
+.dark .code-view-container .token.function {
+  color: #fca5a5 !important; /* Lighter red for dark mode */
+}
+
+.dark .code-view-container .token.operator,
+.dark .code-view-container .token.punctuation {
+  color: #f9fafb !important; /* White for operators in dark mode */
+}
+
+.dark .code-view-container .token.preprocessor {
+  color: #c4b5fd !important; /* Lighter purple for dark mode */
+}
+
+/* Fallback for any remaining tokens */
+.code-view-container .token {
+  color: hsl(var(--foreground)) !important;
+}
+
+/* Ensure no black text on dark background */
+.code-view-container .token[style*="color: black"],
+.code-view-container .token[style*="color: #000"],
+.code-view-container .token[style*="color: rgb(0,0,0)"] {
+  color: hsl(var(--foreground)) !important;
+}
+
+/* Dark mode specific CodeView styles */
+.dark .code-view-container {
+  background: oklch(0.141 0.005 285.823) !important;
+  color: oklch(0.985 0 0) !important;
+}
+
+.dark .code-view-container pre {
+  background: oklch(0.141 0.005 285.823) !important;
+  color: oklch(0.985 0 0) !important;
+}
+
+.dark .code-view-container code {
+  background: transparent !important;
+  color: oklch(0.985 0 0) !important;
+}
+
+/* Light mode specific CodeView styles */
+.light .code-view-container {
+  background: oklch(1 0 0) !important;
+  color: oklch(0.141 0.005 285.823) !important;
+}
+
+.light .code-view-container pre {
+  background: oklch(1 0 0) !important;
+  color: oklch(0.141 0.005 285.823) !important;
+}
+
+.light .code-view-container code {
+  background: transparent !important;
+  color: oklch(0.141 0.005 285.823) !important;
+}
+
+/* Ensure crisp text rendering */
+.code-view-container pre,
+.code-view-container code {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+}
+
+/* Remove any remaining text effects */
+.code-view-container pre[class*="language-"],
+.code-view-container code[class*="language-"] {
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+  text-stroke: 0 !important;
+  filter: none !important;
+}
+
+/* Override any browser default text effects */
+.code-view-container {
+  -webkit-text-stroke-width: 0 !important;
+  text-stroke-width: 0 !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+/* Remove any Prism.js default borders and outlines */
+pre[class*="language-"],
+code[class*="language-"] {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Ensure no double borders in CodeView */
+pre[class*="language-"] {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+code[class*="language-"] {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Table of Contents Animations */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* TOC Container Styling */
+.sticky > div:first-child {
+  background: hsl(var(--background) / 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid hsl(var(--border));
+  z-index: 10;
+}
+
+/* TOC Active State */
+.group:has(.bg-primary) {
+  color: hsl(var(--foreground));
+}
+
+/* TOC Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* TOC Scrollbar Styling */
+.sticky nav {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted)) transparent;
+}
+
+.sticky nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sticky nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sticky nav::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 2px;
+}
+
+.sticky nav::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Ensure proper scroll margin for headings */
+.prose h2,
+.prose h3 {
+  scroll-margin-top: 0; /* 0px - same as TOC top offset */
+}
+
+/* YouTube iframe responsive styling */
+.prose iframe[src*="youtube.com"],
+.prose iframe[src*="youtu.be"] {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin: 2rem 0;
+}
+
+/* Responsive iframe container */
+.prose .wp-block-embed,
+.prose .wp-embed {
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.prose .wp-block-embed iframe,
+.prose .wp-block-embed .wp-block-embed__wrapper {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9;
+}
+
+/* Ensure iframes don't overflow */
+.prose iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Additional sticky support */
+@supports (position: sticky) {
+  .sticky {
+    position: sticky !important;
+  }
+}
+
+/* Fallback for older browsers */
+@supports not (position: sticky) {
+  .sticky {
+    position: relative !important;
+  }
+}
+
+/* Ensure parent containers don't interfere with sticky */
+.grid {
+  overflow: visible !important;
+}
+
+.grid > div {
+  overflow: visible !important;
+}
+
+/* Force sticky to work */
+[class*="sticky"] {
+  position: sticky !important;
+}
+
+/* Additional sticky fixes */
+[style*="position: sticky"] {
+  position: sticky !important;
+}
+
+/* Ensure no parent overflow issues */
+body,
+html {
+  overflow-x: visible !important;
+}
+
+/* Grid container fixes */
+.grid-container {
+  overflow: visible !important;
+  position: relative !important;
+}
+
+/* Ensure grid items don't force height */
+.grid > div {
+  height: auto !important;
+}
+
+/* Remove forced height constraints */
+.h-full {
+  height: auto !important;
+}
+
+.min-h-screen {
+  min-height: auto !important;
+}
+
+/* TOC Text Wrapping and Layout */
+.sticky button {
+  /* min-height: 2rem; */
+  /* align-items: flex-start !important; */
+}
